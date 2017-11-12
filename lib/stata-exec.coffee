@@ -4,14 +4,16 @@ String::addSlashes = ->
   @replace(/[\\"]/g, "\\$&").replace /\u0000/g, "\\0"
 
 apps =
-  stata: 'StataMP'
+  stataMP: 'StataMP'
+  stataIC: 'StataIC'
+  stataSE: 'StataSE'
 
 module.exports =
   config:
     whichApp:
       type: 'string'
-      enum: [apps.stata]
-      default: apps.stata
+      enum: [apps.stataMP, apps.stataIC, apps.stataSE]
+      default: apps.stataSE
       description: 'Which application to send code to'
     advancePosition:
       type: 'boolean'
@@ -105,7 +107,9 @@ module.exports =
   sendCode: (code, whichApp) ->
     @previousCommand = code
     switch whichApp
-      when apps.stata then @stata(code)
+      when apps.stataIC then @stata(code, whichApp)
+      when apps.stataMP then @stata(code, whichApp)
+      when apps.stataSE then @stata(code, whichApp)
       else console.error 'stata-exec.whichApp "' + whichApp + '" is not supported.'
 
   getFunctionRange: ->
@@ -301,13 +305,13 @@ module.exports =
 
     @sendCode(cwd.addSlashes(), whichApp)
 
-  stata: (selection) ->
+  stata: (selection, whichApp) ->
     osascript = require 'node-osascript'
     command = []
     focusWindow = atom.config.get 'stata-exec.focusWindow'
     if focusWindow
-      command.push 'tell application "StataMP" to activate'
-    command.push 'tell application "StataMP" to DoCommandAsync code'
+      command.push 'tell application "' +  whichApp + '" to activate'
+    command.push 'tell application "' + whichApp + '" to DoCommandAsync code'
     command = command.join('\n')
 
     osascript.execute command, {code: selection},
