@@ -14,6 +14,7 @@
 'atom-text-editor':
   'shift-cmd-e': 'stata-exec:set-working-directory'
   'cmd-enter': 'stata-exec:send-command'
+  'shift-cmd-d': 'stata-exec:do-file'
   'shift-cmd-u': 'stata-exec:send-function'
   'shift-cmd-m': 'stata-exec:send-paragraph'
   'shift-alt-p': 'stata-exec:send-previous-command'

@@ -44,6 +44,8 @@ module.exports =
     @subscriptions.add atom.commands.add 'atom-workspace',
       'stata-exec:send-previous-command', => @sendPreviousCommand()
     @subscriptions.add atom.commands.add 'atom-workspace',
+      'stata-exec:do-file', => @doFile()
+    @subscriptions.add atom.commands.add 'atom-workspace',
       'stata-exec:send-paragraph': => @sendParagraph()
     @subscriptions.add atom.commands.add 'atom-workspace',
       'stata-exec:send-function': => @sendFunction()
@@ -61,6 +63,13 @@ module.exports =
     editor = atom.workspace.getActiveTextEditor()
     buffer = editor.getBuffer()
     return [editor, buffer]
+
+  doFile: ->
+    whichApp = atom.config.get 'stata-exec.whichApp'
+    [editor, buffer] = @_getEditorAndBuffer()
+    documentTitle = editor.getPath()
+    doFileCommand = 'do `\\"' + documentTitle + '\\"\''
+    @sendCode(doFileCommand, whichApp)
 
   sendCommand: ->
     whichApp = atom.config.get 'stata-exec.whichApp'

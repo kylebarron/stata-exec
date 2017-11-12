@@ -5,6 +5,7 @@
       'label': 'Stata-exec'
       'submenu': [
         { 'label': 'Send line/selection', 'command': 'stata-exec:send-command'}
+        { 'label': 'Do entire file', 'command': 'stata-exec:do-file'}
         { 'label': 'Send function', 'command': 'stata-exec:send-function'}
         { 'label': 'Send paragraph', 'command': 'stata-exec:send-paragraph'}
         { 'label': 'Send previous command', 'command': 'stata-exec:send-previous-command'}
