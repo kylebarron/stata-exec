@@ -6,6 +6,7 @@
   "activationCommands": {
     "atom-text-editor": [
       "stata-exec:send-command",
+      "stata-exec:send-previous-command",
       "stata-exec:send-function",
       "stata-exec:send-paragraph",
       "stata-exec:set-working-directory",
