@@ -11,11 +11,30 @@
 # eventually make it like R-box with cmd-enter
 # and have custom command palette to choose application
 # https://discuss.atom.io/t/custom-use-of-the-command-palette/15702/2
-'atom-text-editor[data-grammar="source stata"]':
+
+# Ported from https://github.com/nteract/hydrogen/blob/master/keymaps/hydrogen.cson
+# ---------- Editor --------------
+'atom-text-editor[data-grammar="source stata"]:not([mini])':
   'shift-cmd-e': 'stata-exec:set-working-directory'
   'cmd-enter': 'stata-exec:send-command'
   'shift-cmd-d': 'stata-exec:do-file'
   'shift-cmd-u': 'stata-exec:send-function'
   'shift-cmd-m': 'stata-exec:send-paragraph'
   'shift-alt-p': 'stata-exec:send-previous-command'
-  # shift-cmd y, u, i, j, k, x, m
+
+# Override shift-enter and cmd-enter
+'.platform-darwin atom-text-editor[data-grammar="source stata"]:not([mini])':
+  'shift-cmd-e': 'stata-exec:set-working-directory'
+  'cmd-enter': 'stata-exec:send-command'
+  'shift-cmd-d': 'stata-exec:do-file'
+  'shift-cmd-u': 'stata-exec:send-function'
+  'shift-cmd-m': 'stata-exec:send-paragraph'
+  'shift-alt-p': 'stata-exec:send-previous-command'
+
+# # Override ctrl-enter
+# '.platform-win32 atom-text-editor:not([mini]), .platform-linux atom-text-editor:not([mini])':
+#     'ctrl-enter': 'hydrogen:run'
+#     'ctrl-shift-backspace': 'hydrogen:clear-results'
+#     'ctrl-alt-enter': 'hydrogen:run-cell'
+#     'ctrl-enter': 'hydrogen:run'
+#     'ctrl-shift-alt-enter': 'hydrogen:run-all'
