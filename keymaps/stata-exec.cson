@@ -12,7 +12,7 @@
 # and have custom command palette to choose application
 # https://discuss.atom.io/t/custom-use-of-the-command-palette/15702/2
 'atom-text-editor':
-  'shift-cmd-e': 'stata-exec:setwd'
+  'shift-cmd-e': 'stata-exec:set-working-directory'
   'cmd-enter': 'stata-exec:send-command'
   'shift-cmd-u': 'stata-exec:send-function'
   'shift-cmd-m': 'stata-exec:send-paragraph'

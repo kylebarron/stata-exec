@@ -8,7 +8,7 @@
       "stata-exec:send-command",
       "stata-exec:send-function",
       "stata-exec:send-paragraph",
-      "stata-exec:setwd"
+      "stata-exec:set-working-directory"
     ]
   },
   "repository": "https://github.com/kylebarron/stata-exec",

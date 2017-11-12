@@ -48,7 +48,7 @@ module.exports =
     @subscriptions.add atom.commands.add 'atom-workspace',
       'stata-exec:send-function': => @sendFunction()
     @subscriptions.add atom.commands.add 'atom-workspace',
-      'stata-exec:setwd', => @setWorkingDirectory()
+      'stata-exec:set-working-directory', => @setWorkingDirectory()
 
     # # this is for testing
     # @subscriptions.add atom.commands.add 'atom-workspace',
