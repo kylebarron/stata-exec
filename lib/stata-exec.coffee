@@ -3,11 +3,15 @@
 String::addSlashes = ->
   @replace(/[\\"]/g, "\\$&").replace /\u0000/g, "\\0"
 
+apps =
+  stata: 'StataMP'
+
 module.exports =
   config:
     whichApp:
       type: 'string'
-      default: 'StataMP'
+      enum: [apps.stata]
+      default: apps.stata
       description: 'Which application to send code to'
     advancePosition:
       type: 'boolean'
@@ -27,10 +31,6 @@ module.exports =
       type: 'boolean'
       default: true
       description: 'Send notifications if there is an error sending code'
-    smartInsertOperator:
-      type: 'boolean'
-      default: true
-      description: 'Try to be "smart" when inserting operators (see README)'
 
   subscriptions: null
 
@@ -49,18 +49,10 @@ module.exports =
       'stata-exec:send-function': => @sendFunction()
     @subscriptions.add atom.commands.add 'atom-workspace',
       'stata-exec:setwd', => @setWorkingDirectory()
-    @subscriptions.add atom.commands.add 'atom-workspace',
-      'stata-exec:send-knitr': => @sendKnitr()
 
     # # this is for testing
     # @subscriptions.add atom.commands.add 'atom-workspace',
     #   'stata-exec:test',  => @getCurrentParagraphRange()
-
-    @subscriptions.add atom.commands.add 'atom-workspace',
-      'stata-exec:insert-assignment', => @insertAssignment()
-
-    @subscriptions.add atom.commands.add 'atom-workspace',
-      'stata-exec:insert-pipe', => @insertPipe()
 
   deactivate: ->
     @subscriptions.dispose()
@@ -245,9 +237,6 @@ module.exports =
       console.error 'No paragraph at cursor.'
       @conditionalWarning("No paragraph at cursor.")
 
-  isWhitespaceLine: (line) ->
-    return line.replace(/\s/g, '').length is 0
-
   nonEmptyLine: (line) ->
     skipComments = atom.config.get 'stata-exec.skipComments'
     ret = true
@@ -256,25 +245,6 @@ module.exports =
     # a non empty line is a line that doesn't contain only a comment
     # and at least 1 character
     return ret and /\S/.test(line)
-
-  _findBackward: (searchFun, startPosition = null) ->
-    [editor, buffer] = @_getEditorAndBuffer()
-
-    if not startPosition?
-      startPosition = editor.getCursorBufferPosition().row
-
-    index = null
-    for lineIndex in [startPosition..0]
-      currentLine = buffer.lineForRow(lineIndex)
-      if searchFun(currentLine)
-        index = lineIndex
-        break
-
-    position = null
-    if index?
-      position = [index, 0]
-
-    return position
 
   _findForward: (searchFun, startPosition = null) ->
     editor = atom.workspace.getActiveTextEditor()
@@ -298,80 +268,6 @@ module.exports =
 
     return null
 
-  getGeneralRange: (startFun, endFun) ->
-    # returns a Range with the beginning being the first line of the
-    # knitr block and the end of the knitr block.
-    startPosition = @_findBackward(startFun)
-    endPosition = null
-    if startPosition?
-      endPosition = @_findForward(endFun, startPosition[0] + 1)
-    if startPosition? and endPosition?
-      return new Range(startPosition, endPosition)
-
-    return null
-
-  rMarkdownStart: (line) ->
-    return /^\s*([`]{3})\s*([\{]{0,1})([rR])([^\}]*)([\}]{0,1})\s*$/.test(line)
-
-  rMarkdownEnd: (line) ->
-    return /^\s*([`]{3})\s*$/.test(line)
-
-  sendKnitr: ->
-    [editor, buffer] = @_getEditorAndBuffer()
-    codeRange = null
-    fileName = editor.getPath()
-    extension = fileName.split('.').pop()
-
-    if /rmd/i.test(extension)
-      codeRange = @getGeneralRange(@rMarkdownStart, @rMarkdownEnd)
-    else if /rnw/i.test(extension)
-      @conditionalWarning("Rnw not implemented yet")
-      return
-    else
-      @conditionalWarning("File not recognized as knitr.")
-      return
-
-    whichApp = atom.config.get 'stata-exec.whichApp'
-    currentPosition = editor.getCursorBufferPosition().row
-
-    if not codeRange?
-      msg = "Couldn't find the beginning or end of a knitr block."
-      atom.notifications.addError(msg)
-      console.error msg
-      return
-
-    # ensure that current line is contained in codeRange
-    if not(codeRange.start.row <= currentPosition and
-    currentPosition <= codeRange.end.row)
-      msg = "Couldn't find a knitr block at the current position."
-      atom.notifications.addError(msg)
-      console.error msg
-      return
-
-    codeRange.start.row += 1
-    codeRange.end.row -= 1
-    codeRange.end.column = buffer.lineLengthForRow(codeRange.end.row)
-
-    if (codeRange.end.row - codeRange.start.row) < 0
-      msg = "Empty knitr block."
-      atom.notifications.addError(msg)
-      console.error msg
-      return
-
-    code = editor.getTextInBufferRange(codeRange)
-    code = code.addSlashes()
-    @sendCode(code, whichApp)
-
-    advancePosition = atom.config.get 'stata-exec.advancePosition'
-    if advancePosition
-      nextBlockStart = @_findForward(@rMarkdownStart, codeRange.end.row + 1)
-      if not nextBlockStart?
-        nextBlockStart = [editor.getLineCount() - 1, 0]
-      editor.setCursorScreenPosition(nextBlockStart)
-      editor.moveToFirstCharacterOfLine()
-
-    return null
-
   setWorkingDirectory: ->
     # set the current working directory to the directory of
     # where the current file is
@@ -385,30 +281,25 @@ module.exports =
       @conditionalWarning('No current working directory (save the file first).')
       return
     cwd = cwd.substring(0, cwd.lastIndexOf('/'))
-    cwd = "setwd(\"" + cwd + "\")"
+    cwd = "cd " + cwd
 
     @sendCode(cwd.addSlashes(), whichApp)
 
   stata: (selection) ->
-    # This assumes the active pane item is an console
     osascript = require 'node-osascript'
     command = []
     focusWindow = atom.config.get 'stata-exec.focusWindow'
     if focusWindow
       command.push 'tell application "StataMP" to activate'
-    command.push 'tell application "StataMP"'
-    command.push '  tell the current terminal'
-    # if focusWindow
-    #   command.push '    activate current session'
-    command.push '    tell the last session'
-    command.push '      write text code'
-    command.push '    end tell'
-    command.push '  end tell'
-    command.push 'end tell'
+    command.push 'tell application "StataMP" to DoCommandAsync code'
     command = command.join('\n')
-    osascript.execute command, {code: selection}, (error, result, raw) ->
-      if error
-        console.error(error)
+
+    osascript.execute command, {code: selection},
+      (error, result, raw) ->
+        if error
+          console.error error
+          console.error 'code: ', selection
+          console.error 'Applescript: ', command
 
   getWhichApp: ->
     return atom.config.get 'stata-exec.whichApp'
@@ -425,25 +316,3 @@ module.exports =
       editor.getTextInBufferRange(Range(leftPosition, currentPosition)),
       editor.getTextInBufferRange(Range(currentPosition, rightPosition))
     ]
-
-  # behavior:
-  # if there is a whitespace to the left or right, do not insert additional whitespace.
-  # otherwise, insert whitespace.
-  # XXX: behavior is a bit weird when text is selected.
-  # unfortunately, it is unclear how to deal with selections because Atom does not report if there is currently a selection, but only the last selection.
-  _smartInsert: (text) ->
-    beSmart = atom.config.get 'stata-exec.smartInsertOperator'
-
-    [editor, buffer] = @_getEditorAndBuffer()
-    # get the character to the left and to the right.
-    # if there is whitespace to the left do not insert whitespace
-    [left, right] = @_getSurroundingCharacters()
-    textInsert = text
-
-    if !beSmart or left != ' '
-      textInsert = ' ' + textInsert
-
-    if !beSmart or right != ' '
-      textInsert = textInsert + ' '
-
-    editor.insertText(textInsert)

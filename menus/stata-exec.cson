@@ -7,7 +7,6 @@
         { 'label': 'Send line/selection', 'command': 'stata-exec:send-command'}
         { 'label': 'Send function', 'command': 'stata-exec:send-function'}
         { 'label': 'Send paragraph', 'command': 'stata-exec:send-paragraph'}
-        { 'label': 'Send knitr', 'command': 'stata-exec:send-knitr'}
         { 'label': 'Send previous command', 'command': 'stata-exec:send-previous-command'}
         { 'label': 'Change working directory', 'command': 'stata-exec:setwd'}
       ]

@@ -5,23 +5,13 @@
   "description": "Send Stata code to the Stata GUI window",
   "activationCommands": {
     "atom-text-editor": [
-      "r-exec:send-command",
-      "r-exec:send-function",
-      "r-exec:send-paragraph",
-      "r-exec:send-knitr",
-      "r-exec:setwd",
-      "r-exec:set-chrome",
-      "r-exec:set-iterm",
-      "r-exec:set-iterm2",
-      "r-exec:set-rapp",
-      "r-exec:set-rstudio",
-      "r-exec:set-safari",
-      "r-exec:set-terminal",
-      "r-exec:insert-assignment",
-      "r-exec:insert-pipe"
+      "stata-exec:send-command",
+      "stata-exec:send-function",
+      "stata-exec:send-paragraph",
+      "stata-exec:setwd"
     ]
   },
-  "repository": "https://github.com/kylebarron/atom-r-exec",
+  "repository": "https://github.com/kylebarron/stata-exec",
   "keywords": [
     "Stata",
     "code",
