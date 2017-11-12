@@ -12,12 +12,12 @@
 # and have custom command palette to choose application
 # https://discuss.atom.io/t/custom-use-of-the-command-palette/15702/2
 'atom-text-editor':
-  'shift-cmd-e': 'r-exec:setwd'
-  'cmd-enter': 'r-exec:send-command'
-  'shift-cmd-u': 'r-exec:send-function'
-  'shift-cmd-k': 'r-exec:send-knitr'
-  'shift-cmd-m': 'r-exec:send-paragraph'
-  'alt--': 'r-exec:insert-assignment'
-  'shift-alt-m': 'r-exec:insert-pipe'
-  'shift-alt-p': 'r-exec:send-previous-command'
+  'shift-cmd-e': 'stata-exec:setwd'
+  'cmd-enter': 'stata-exec:send-command'
+  'shift-cmd-u': 'stata-exec:send-function'
+  'shift-cmd-k': 'stata-exec:send-knitr'
+  'shift-cmd-m': 'stata-exec:send-paragraph'
+  'alt--': 'stata-exec:insert-assignment'
+  'shift-alt-m': 'stata-exec:insert-pipe'
+  'shift-alt-p': 'stata-exec:send-previous-command'
   # shift-cmd y, u, i, j, k, x, m

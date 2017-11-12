@@ -1,8 +1,8 @@
 {
-  "name": "r-exec",
-  "main": "./lib/r-exec",
-  "version": "0.5.0",
-  "description": "Send R code to various R consoles",
+  "name": "stata-exec",
+  "main": "./lib/stata-exec",
+  "version": "0.0.1",
+  "description": "Send Stata code to the Stata GUI window",
   "activationCommands": {
     "atom-text-editor": [
       "r-exec:send-command",
@@ -21,10 +21,9 @@
       "r-exec:insert-pipe"
     ]
   },
-  "repository": "https://github.com/pimentel/atom-r-exec",
+  "repository": "https://github.com/kylebarron/atom-r-exec",
   "keywords": [
-    "R",
-    "rstats",
+    "Stata",
     "code",
     "run",
     "runner"
