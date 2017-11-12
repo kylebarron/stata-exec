@@ -2,7 +2,7 @@
   "name": "stata-exec",
   "main": "./lib/stata-exec",
   "version": "0.0.1",
-  "description": "Send Stata code to the Stata GUI window",
+  "description": "Send code to the Stata GUI window",
   "activationCommands": {
     "atom-text-editor": [
       "stata-exec:send-command",
@@ -14,6 +14,9 @@
     ]
   },
   "repository": "https://github.com/kylebarron/stata-exec",
+  "bugs": {
+    "url": "https://github.com/kylebarron/stata-exec/issues"
+  },
   "keywords": [
     "Stata",
     "code",
@@ -24,8 +27,12 @@
   "engines": {
     "atom": ">1.0.0"
   },
+  "package-deps": [
+    "language-stata"
+  ],
   "dependencies": {
     "node-osascript": "1.0.4",
-    "path": "0.12.7"
+    "path": "0.12.7",
+    "atom-package-deps": "4.6.0"
   }
 }

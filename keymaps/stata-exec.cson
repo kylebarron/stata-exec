@@ -11,7 +11,7 @@
 # eventually make it like R-box with cmd-enter
 # and have custom command palette to choose application
 # https://discuss.atom.io/t/custom-use-of-the-command-palette/15702/2
-'atom-text-editor':
+'atom-text-editor[data-grammar="source stata"]':
   'shift-cmd-e': 'stata-exec:set-working-directory'
   'cmd-enter': 'stata-exec:send-command'
   'shift-cmd-d': 'stata-exec:do-file'
