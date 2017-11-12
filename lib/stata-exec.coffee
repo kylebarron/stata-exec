@@ -69,7 +69,7 @@ module.exports =
     # (if the user wants to)
     currentPosition = editor.getLastSelection().getScreenRange().end
     selection = @getSelection(whichApp)
-    @sendCode(selection.selection, whichApp)
+    @sendCode(@removeComments(selection.selection), whichApp)
 
     advancePosition = atom.config.get 'stata-exec.advancePosition'
     if advancePosition and not selection.anySelection
@@ -81,6 +81,13 @@ module.exports =
     else
       if not selection.anySelection
         editor.setCursorScreenPosition(currentPosition)
+
+  removeComments: (code) ->
+    code = code.replace(/\s*(\/\/\/).*\n?\s*/g, " ")
+    code = code.replace(/\s*\/\/.*/g, " ")
+    code = code.replace(/\/\*([\s\S]*?)\*\//gm, " ") # flags = re.DOTALL
+    code = code.replace(/[\t ]+/g, " ")
+    return [code]
 
   sendPreviousCommand: ->
     whichApp = atom.config.get 'stata-exec.whichApp'
