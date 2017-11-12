@@ -5,12 +5,13 @@ String::addSlashes = ->
 
 apps =
   stata: 'StataMP'
+  xquartz: 'XQuartz'
 
 module.exports =
   config:
     whichApp:
       type: 'string'
-      enum: [apps.stata]
+      enum: [apps.stata, apps.xquartz]
       default: apps.stata
       description: 'Which application to send code to'
     advancePosition:
@@ -97,6 +98,7 @@ module.exports =
     @previousCommand = code
     switch whichApp
       when apps.stata then @stata(code)
+      when apps.xquartz then @xquartz(code)
       else console.error 'stata-exec.whichApp "' + whichApp + '" is not supported.'
 
   getFunctionRange: ->
@@ -299,6 +301,22 @@ module.exports =
     if focusWindow
       command.push 'tell application "StataMP" to activate'
     command.push 'tell application "StataMP" to DoCommandAsync code'
+    command = command.join('\n')
+
+    osascript.execute command, {code: selection},
+      (error, result, raw) ->
+        if error
+          console.error error
+          console.error 'code: ', selection
+          console.error 'Applescript: ', command
+
+  xquartz: (selection) ->
+    osascript = require 'node-osascript'
+    command = []
+    focusWindow = atom.config.get 'stata-exec.focusWindow'
+    if focusWindow
+      command.push 'tell application "XQuartz" to activate'
+    command.push 'tell application "XQuartz" to DoCommandAsync code'
     command = command.join('\n')
 
     osascript.execute command, {code: selection},
