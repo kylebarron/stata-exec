@@ -119,7 +119,7 @@ module.exports =
     currentPosition.row += 1
     backwardRange = [0, currentPosition]
     funRegex = new
-      RegExp(/[a-zA-Z]+[a-zA-Z0-9_\.]*[\s]*(<-|=)[\s]*(function)[\s]*\(/g)
+      RegExp(/^\s*(pr(ogram|ogra|ogr|og|o)?)\s+(de(fine|fin|fi|f)?\s+)?[A-Za-z_][A-Za-z0-9_]{0,31}/g)
     foundStart = null
     editor.backwardsScanInBufferRange funRegex, backwardRange, (result) ->
       if result.range.start.column == 0
@@ -135,7 +135,7 @@ module.exports =
     forwardRange = [foundStart.start, new Point(numberOfLines + 1, 0)]
 
     foundEnd = null
-    editor.scanInBufferRange /}/g, forwardRange, (result) ->
+    editor.scanInBufferRange /^\s*end/g, forwardRange, (result) ->
       if result.range.start.column == 0
         foundEnd = result.range
         result.stop()
