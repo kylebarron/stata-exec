@@ -1,0 +1,40 @@
+{
+  "name": "r-exec",
+  "main": "./lib/r-exec",
+  "version": "0.5.0",
+  "description": "Send R code to various R consoles",
+  "activationCommands": {
+    "atom-text-editor": [
+      "r-exec:send-command",
+      "r-exec:send-function",
+      "r-exec:send-paragraph",
+      "r-exec:send-knitr",
+      "r-exec:setwd",
+      "r-exec:set-chrome",
+      "r-exec:set-iterm",
+      "r-exec:set-iterm2",
+      "r-exec:set-rapp",
+      "r-exec:set-rstudio",
+      "r-exec:set-safari",
+      "r-exec:set-terminal",
+      "r-exec:insert-assignment",
+      "r-exec:insert-pipe"
+    ]
+  },
+  "repository": "https://github.com/pimentel/atom-r-exec",
+  "keywords": [
+    "R",
+    "rstats",
+    "code",
+    "run",
+    "runner"
+  ],
+  "license": "MIT",
+  "engines": {
+    "atom": ">1.0.0"
+  },
+  "dependencies": {
+    "node-osascript": "1.0.4",
+    "path": "0.12.7"
+  }
+}

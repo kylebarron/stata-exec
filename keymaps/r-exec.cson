@@ -1,0 +1,23 @@
+# Keybindings require three things to be fully defined: A selector that is
+# matched against the focused element, the keystroke and the command to
+# execute.
+#
+# Below is a basic keybinding which registers on all platforms by applying to
+# the root workspace element.
+
+# For more detailed documentation see
+# https://atom.io/docs/latest/advanced/keymaps
+
+# eventually make it like R-box with cmd-enter
+# and have custom command palette to choose application
+# https://discuss.atom.io/t/custom-use-of-the-command-palette/15702/2
+'atom-text-editor':
+  'shift-cmd-e': 'r-exec:setwd'
+  'cmd-enter': 'r-exec:send-command'
+  'shift-cmd-u': 'r-exec:send-function'
+  'shift-cmd-k': 'r-exec:send-knitr'
+  'shift-cmd-m': 'r-exec:send-paragraph'
+  'alt--': 'r-exec:insert-assignment'
+  'shift-alt-m': 'r-exec:insert-pipe'
+  'shift-alt-p': 'r-exec:send-previous-command'
+  # shift-cmd y, u, i, j, k, x, m

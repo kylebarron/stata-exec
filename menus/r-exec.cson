@@ -1,0 +1,26 @@
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'R-exec'
+      'submenu': [
+        { 'label': 'Send line/selection', 'command': 'r-exec:send-command'}
+        { 'label': 'Send function', 'command': 'r-exec:send-function'}
+        { 'label': 'Send paragraph', 'command': 'r-exec:send-paragraph'}
+        { 'label': 'Send knitr', 'command': 'r-exec:send-knitr'}
+        { 'label': 'Send previous command', 'command': 'r-exec:send-previous-command'}
+        { 'label': 'Change working directory', 'command': 'r-exec:setwd'}
+        'label': 'Change app'
+        'submenu': [
+          { 'label': 'Chrome', 'command': 'r-exec:set-chrome'}
+          { 'label': 'iTerm', 'command': 'r-exec:set-iterm'}
+          { 'label': 'iTerm2', 'command': 'r-exec:set-iterm2'}
+          { 'label': 'R.app', 'command': 'r-exec:set-rapp'}
+          { 'label': 'RStudio', 'command': 'r-exec:set-rstudio'}
+          { 'label': 'Safari', 'command': 'r-exec:set-safari'}
+          { 'label': 'Terminal', 'command': 'r-exec:set-terminal'}
+        ]
+      ]
+    ]
+  }
+]
