@@ -1,7 +1,7 @@
 {
   "name": "stata-exec",
   "main": "./lib/stata-exec",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Send code to the Stata GUI window",
   "activationCommands": {
     "atom-text-editor": [
