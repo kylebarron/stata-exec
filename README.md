@@ -1,102 +1,54 @@
-# r-exec
+# stata-exec
 
-Send R code from Atom to be executed in R.app, Terminal, iTerm, or a web browser running RStudio Server on Mac OS X.  The current selection is sent or in the case of no selection the current line is sent.
+Send Stata code to the Stata window from the Atom text editor. _Note: This is for Mac only. Windows support is planned; Linux users can use ![stata-autokey](https://github.com/kylebarron/stata-autokey)._ This is ported from the very good ![r-exec](https://github.com/pimentel/atom-r-exec) package.
+
+![run-command](./img/run_command.gif)
 
 ## Installation
 
-`apm install r-exec`
-
-or
-
-Search for `r-exec` within package search in the Settings View.
-
-## Configuration
-
-### Keybindings
-
-While `cmd-enter` is bound to sending code in the package, it is also annoyingly bound to entering a new line by default in atom.
-In order to make it work, you must add the following binding in `~/.atom/keymap.cson`:
-
-```javascript
-'atom-workspace atom-text-editor:not([mini])':
-  'cmd-enter': 'r-exec:send-command'
-```
-
-### Behavior
-
-All configuration can be done in the settings panel. Alternatively, you can edit your configuration file as noted below.
-
-In your global configuration file (`~/.atom/init.coffee`), you may set the following variables:
-
-- `r-exec.whichApp` which R application to use. Valid applications are:
-  - `R.app`: the default (the R GUI).
-  - `RStudio`: the RStudio console.
-  - `iTerm` or `Terminal`: Assumes the currently active terminal has R running.
-  - `Safari` or `Google Chrome`: assumes the currently active tab has an active RStudio session running or only one session is open. If the session is not in the active tab, `r-exec` should be able to find it and still send the code. This is helpful if you are viewing plots full screen.
-- `r-exec.advancePosition`
-  - if `true`, go to the next line/paragraph after running the current line/paragraph.
-  - if `false`, leave the cursor where it currently is
-- `r-exec.focusWindow`.
-  - if `true`, focus the window before sending code.
-  - if `false`, send the code in the background and stay focused on Atom. This is not possible when sending code to a browser.
-- `r-exec.notifications`
-  - if `true`, notifications via `NotificationManager` when a paragraph or function is not identified.
-- `r-exec.smartInsertOperator`
-  - if `true` when inserting operators, only insert whitespace to the left or right of the operator if there is no existing whitespace.
-- `r-exec.skipComments`
-  - if `true` along with `r-exec.advancePosition`, skip comments after a command is run.
-
-The default configuration looks like this:
-
-```javascript
-atom.config.set('r-exec.whichApp', 'R.app')
-atom.config.set('r-exec.advancePosition', false)
-atom.config.set('r-exec.skipComments', true)
-atom.config.set('r-exec.focusWindow', true)
-atom.config.set('r-exec.notifications', true)
-atom.config.set('r-exec.smartInsertOperator', true)
-```
-
-#### Inserting operators
-
-`r-exec` currently supports inserting the assignment (`<-`) and pipe (`%>%`) operators.
-It tries to be smart by looking if there is whitespace to the left or the right of the cursor.
-If there is already whitespace it will not insert additional whitespace.
-Otherwise, it will insert whitespace.
-This can be disabled in the settings tab (`Smart Insert Operator`).
-
-### Notes about iTerm
-
-The iTerm2 Applescript API recently changed as of version 3.0.0.
-Older versions of iTerm2 (< 3.0.0) are supported using mode `iTerm`.
-Newer versions of iTerm2 (>= 3.0.0) are supported using mode `iTerm2`.
+In the terminal run `apm install stata-exec` or search for `stata-exec` in Settings > Install. This package depends on ![`language-stata`](https://atom.io/packages/language-stata), and you will be prompted to install that package if you have not yet installed it.
 
 ## Usage
 
-### Sending code
+Code can be run using either the Command Palette or with keyboard shortcuts. To open the Command Palette, press `cmd-shift-P`, and then start typing `Stata Exec`. The available commands will be shown in the drop-down menu.
 
-- `cmd-enter`: send code to configured application (`r-exec:whichApp`).
-- `shift-cmd-e`: change to current working directory of current file.
-- `shift-cmd-k`: send code between a knitr block (currently only RMarkdown supported).
-- `shift-cmd-u`: send function under current cursor. Currently, only functions that begin of the first column in and on the first column of a line are sent. An example:
-```r
-myFunction <- function(x) {
-  # my code goes here
-}
-```
-- `shift-cmd-m`: send paragraph under current cursor. A paragraph is a region enclosed by whitespace.
+The following are the default keyboard shortcuts. These can be personalized in your ![`config.cson`](http://flight-manual.atom.io/behind-atom/sections/keymaps-in-depth/).
+- `cmd-enter`: send selection or current line to Stata.
+- `shift-cmd-d`: send entire file to Stata. (File must be saved first. This runs `do "/path/to/current/file"`)
 - `shift-alt-p`: send the previous command.
+- `shift-cmd-c`: change Stata's working directory to that of current file.
+- `shift-cmd-g`: send paragraph under current cursor. A paragraph is a region enclosed by whitespace.
+- `shift-cmd-r`: send program definition under current cursor. For example, all the lines in the below snippet would be sent to Stata:
+    ```stata
+    program define myProgram
+        // program contents
+    end
+    ```
 
-### Inserting operators
+## Configuration
 
-- `alt--`: insert the assignment operator ` <- `
-- `shift-alt-m`: insert the pipe operator ` %>% `
+All configuration can be done in the settings panel (Settings > Packages > stata-exec). The available options are listed below:
+
+- Which App
+  - Select StataIC, StataSE, or StataMP, depending on which version of Stata you have.
+- Advance Position
+  - If checked, move cursor to the next line/paragraph after running the current line/paragraph.
+- Focus Window
+  - If checked, bring the Stata window to focus when sending code.
+  - Otherwise, code runs in the background and the screen remains focused on Atom.
+- Notifications
+  - If checked, a pop-up notification will appear when a paragraph or function is not identified.
+- Skip Comments
+  - If this and Advance Position are checked, the after running a line, the cursor will move to the next uncommented line.
 
 ## Notes
 
-It is currently Mac-only because these things are easy to do with AppleScript.  Any help on the Windows or Linux side would be great.
+This package is currently Mac-only. I hope to add Windows support, but need to figure out some Visual Basic or VBScript first. Linux users can use ![stata-autokey](https://github.com/kylebarron/stata-autokey) to run selections in a GUI session of Stata.
 
-## TODO
+## Troubleshooting
 
-- Error reporting.
-- Support for Windows and Linux.
+- _Do entire file_ doesn't run the last line of the do file.
+  - Stata needs there to be a _newline_ character following the last line of text. Add an empty line to the end of the file and it'll work.
+
+
+

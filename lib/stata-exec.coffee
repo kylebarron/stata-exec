@@ -4,15 +4,17 @@ String::addSlashes = ->
   @replace(/[\\"]/g, "\\$&").replace /\u0000/g, "\\0"
 
 apps =
-  stata: 'StataMP'
+  stataMP: 'StataMP'
+  stataIC: 'StataIC'
+  stataSE: 'StataSE'
   xquartz: 'XQuartz'
 
 module.exports =
   config:
     whichApp:
       type: 'string'
-      enum: [apps.stata, apps.xquartz]
-      default: apps.stata
+      enum: [apps.stataMP, apps.stataIC, apps.stataSE, apps.xquartz]
+      default: apps.stataSE
       description: 'Which application to send code to'
     advancePosition:
       type: 'boolean'
@@ -45,9 +47,11 @@ module.exports =
     @subscriptions.add atom.commands.add 'atom-workspace',
       'stata-exec:send-previous-command', => @sendPreviousCommand()
     @subscriptions.add atom.commands.add 'atom-workspace',
+      'stata-exec:do-entire-file', => @doFile()
+    @subscriptions.add atom.commands.add 'atom-workspace',
       'stata-exec:send-paragraph': => @sendParagraph()
     @subscriptions.add atom.commands.add 'atom-workspace',
-      'stata-exec:send-function': => @sendFunction()
+      'stata-exec:send-program': => @sendFunction()
     @subscriptions.add atom.commands.add 'atom-workspace',
       'stata-exec:set-working-directory', => @setWorkingDirectory()
 
@@ -62,6 +66,13 @@ module.exports =
     editor = atom.workspace.getActiveTextEditor()
     buffer = editor.getBuffer()
     return [editor, buffer]
+
+  doFile: ->
+    whichApp = atom.config.get 'stata-exec.whichApp'
+    [editor, buffer] = @_getEditorAndBuffer()
+    documentTitle = editor.getPath()
+    doFileCommand = 'do `\\"' + documentTitle + '\\"\''
+    @sendCode(doFileCommand, whichApp)
 
   sendCommand: ->
     whichApp = atom.config.get 'stata-exec.whichApp'
@@ -97,7 +108,9 @@ module.exports =
   sendCode: (code, whichApp) ->
     @previousCommand = code
     switch whichApp
-      when apps.stata then @stata(code)
+      when apps.stataIC then @stata(code, whichApp)
+      when apps.stataMP then @stata(code, whichApp)
+      when apps.stataSE then @stata(code, whichApp)
       when apps.xquartz then @xquartz(code)
       else console.error 'stata-exec.whichApp "' + whichApp + '" is not supported.'
 
@@ -112,7 +125,7 @@ module.exports =
     currentPosition.row += 1
     backwardRange = [0, currentPosition]
     funRegex = new
-      RegExp(/[a-zA-Z]+[a-zA-Z0-9_\.]*[\s]*(<-|=)[\s]*(function)[\s]*\(/g)
+      RegExp(/^\s*(pr(ogram|ogra|ogr|og|o)?)\s+(de(fine|fin|fi|f)?\s+)?[A-Za-z_][A-Za-z0-9_]{0,31}/g)
     foundStart = null
     editor.backwardsScanInBufferRange funRegex, backwardRange, (result) ->
       if result.range.start.column == 0
@@ -128,7 +141,7 @@ module.exports =
     forwardRange = [foundStart.start, new Point(numberOfLines + 1, 0)]
 
     foundEnd = null
-    editor.scanInBufferRange /}/g, forwardRange, (result) ->
+    editor.scanInBufferRange /^\s*end/g, forwardRange, (result) ->
       if result.range.start.column == 0
         foundEnd = result.range
         result.stop()
@@ -294,13 +307,13 @@ module.exports =
 
     @sendCode(cwd.addSlashes(), whichApp)
 
-  stata: (selection) ->
+  stata: (selection, whichApp) ->
     osascript = require 'node-osascript'
     command = []
     focusWindow = atom.config.get 'stata-exec.focusWindow'
     if focusWindow
-      command.push 'tell application "StataMP" to activate'
-    command.push 'tell application "StataMP" to DoCommandAsync code'
+      command.push 'tell application "' +  whichApp + '" to activate'
+    command.push 'tell application "' + whichApp + '" to DoCommandAsync code'
     command = command.join('\n')
 
     osascript.execute command, {code: selection},

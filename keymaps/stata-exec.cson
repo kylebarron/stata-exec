@@ -11,10 +11,13 @@
 # eventually make it like R-box with cmd-enter
 # and have custom command palette to choose application
 # https://discuss.atom.io/t/custom-use-of-the-command-palette/15702/2
-'atom-text-editor':
-  'shift-cmd-e': 'stata-exec:set-working-directory'
+
+# Ported from https://github.com/nteract/hydrogen/blob/master/keymaps/hydrogen.cson
+# Using .platform-darwin overrides
+'.platform-darwin atom-text-editor[data-grammar="source stata"]:not([mini])':
+  'shift-cmd-c': 'stata-exec:set-working-directory'
   'cmd-enter': 'stata-exec:send-command'
-  'shift-cmd-u': 'stata-exec:send-function'
-  'shift-cmd-m': 'stata-exec:send-paragraph'
+  'shift-cmd-d': 'stata-exec:do-entire-file'
+  'shift-cmd-r': 'stata-exec:send-program'
+  'shift-cmd-g': 'stata-exec:send-paragraph'
   'shift-alt-p': 'stata-exec:send-previous-command'
-  # shift-cmd y, u, i, j, k, x, m
