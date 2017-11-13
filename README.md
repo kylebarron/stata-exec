@@ -17,11 +17,11 @@ The following are the default keyboard shortcuts. These can be personalized in y
 - `shift-cmd-c`: change Stata's working directory to that of current file.
 - `shift-cmd-p`: send paragraph under current cursor. A paragraph is a region enclosed by whitespace.
 - `shift-cmd-r`: send program definition under current cursor. For example, all the lines in the below snippet would be sent to Stata:
-```stata
-program define myProgram
-    // program contents
-end
-```
+    ```stata
+    program define myProgram
+        // program contents
+    end
+    ```
 
 ## Configuration
 
