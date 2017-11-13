@@ -45,8 +45,8 @@ This package is currently Mac-only. I hope to add Windows support, but need to f
 
 ## Troubleshooting
 
-#### `stata-exec:do-entire-file` doesn't run the last line of the do file.
-    - Stata needs there to be a _newline_ character following the last line of text. Add an empty line to the end of the file and it'll work.
+- _Do entire file_ doesn't run the last line of the do file.
+  - Stata needs there to be a _newline_ character following the last line of text. Add an empty line to the end of the file and it'll work.
 
-### Known bugs
+
 
