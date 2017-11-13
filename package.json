@@ -7,10 +7,10 @@
     "atom-text-editor": [
       "stata-exec:send-command",
       "stata-exec:send-previous-command",
-      "stata-exec:send-function",
+      "stata-exec:send-program",
       "stata-exec:send-paragraph",
       "stata-exec:set-working-directory",
-      "stata-exec:do-file"
+      "stata-exec:do-entire-file"
     ]
   },
   "repository": "https://github.com/kylebarron/stata-exec",

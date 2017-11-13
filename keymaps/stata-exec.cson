@@ -13,28 +13,11 @@
 # https://discuss.atom.io/t/custom-use-of-the-command-palette/15702/2
 
 # Ported from https://github.com/nteract/hydrogen/blob/master/keymaps/hydrogen.cson
-# ---------- Editor --------------
-'atom-text-editor[data-grammar="source stata"]:not([mini])':
-  'shift-cmd-e': 'stata-exec:set-working-directory'
-  'cmd-enter': 'stata-exec:send-command'
-  'shift-cmd-d': 'stata-exec:do-file'
-  'shift-cmd-u': 'stata-exec:send-function'
-  'shift-cmd-m': 'stata-exec:send-paragraph'
-  'shift-alt-p': 'stata-exec:send-previous-command'
-
-# Override shift-enter and cmd-enter
+# Using .platform-darwin overrides
 '.platform-darwin atom-text-editor[data-grammar="source stata"]:not([mini])':
-  'shift-cmd-e': 'stata-exec:set-working-directory'
+  'shift-cmd-c': 'stata-exec:set-working-directory'
   'cmd-enter': 'stata-exec:send-command'
-  'shift-cmd-d': 'stata-exec:do-file'
-  'shift-cmd-u': 'stata-exec:send-function'
-  'shift-cmd-m': 'stata-exec:send-paragraph'
+  'shift-cmd-d': 'stata-exec:do-entire-file'
+  'shift-cmd-r': 'stata-exec:send-program'
+  'shift-cmd-p': 'stata-exec:send-paragraph'
   'shift-alt-p': 'stata-exec:send-previous-command'
-
-# # Override ctrl-enter
-# '.platform-win32 atom-text-editor:not([mini]), .platform-linux atom-text-editor:not([mini])':
-#     'ctrl-enter': 'hydrogen:run'
-#     'ctrl-shift-backspace': 'hydrogen:clear-results'
-#     'ctrl-alt-enter': 'hydrogen:run-cell'
-#     'ctrl-enter': 'hydrogen:run'
-#     'ctrl-shift-alt-enter': 'hydrogen:run-all'

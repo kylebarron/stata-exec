@@ -46,11 +46,11 @@ module.exports =
     @subscriptions.add atom.commands.add 'atom-workspace',
       'stata-exec:send-previous-command', => @sendPreviousCommand()
     @subscriptions.add atom.commands.add 'atom-workspace',
-      'stata-exec:do-file', => @doFile()
+      'stata-exec:do-entire-file', => @doFile()
     @subscriptions.add atom.commands.add 'atom-workspace',
       'stata-exec:send-paragraph': => @sendParagraph()
     @subscriptions.add atom.commands.add 'atom-workspace',
-      'stata-exec:send-function': => @sendFunction()
+      'stata-exec:send-program': => @sendFunction()
     @subscriptions.add atom.commands.add 'atom-workspace',
       'stata-exec:set-working-directory', => @setWorkingDirectory()
 
