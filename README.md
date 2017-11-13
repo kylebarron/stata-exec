@@ -2,6 +2,8 @@
 
 Send Stata code to the Stata window from the Atom text editor. _Note: This is for Mac only. Windows support is planned; Linux users can use ![stata-autokey](https://github.com/kylebarron/stata-autokey)._ This is ported from the very good ![r-exec](https://github.com/pimentel/atom-r-exec) package.
 
+![run-command](./img/run_command.gif)
+
 ## Installation
 
 In the terminal run `apm install stata-exec` or search for `stata-exec` in Settings > Install. This package depends on ![`language-stata`](https://atom.io/packages/language-stata), and you will be prompted to install that package if you have not yet installed it.
