@@ -19,5 +19,5 @@
   'cmd-enter': 'stata-exec:send-command'
   'shift-cmd-d': 'stata-exec:do-entire-file'
   'shift-cmd-r': 'stata-exec:send-program'
-  'shift-cmd-p': 'stata-exec:send-paragraph'
+  'shift-cmd-g': 'stata-exec:send-paragraph'
   'shift-alt-p': 'stata-exec:send-previous-command'
