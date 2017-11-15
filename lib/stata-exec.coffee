@@ -301,7 +301,7 @@ module.exports =
       @conditionalWarning('No current working directory (save the file first).')
       return
     cwd = cwd.substring(0, cwd.lastIndexOf('/'))
-    cwd = "cd " + cwd
+    cwd = 'cd `"' + cwd + '"\''
 
     @sendCode(cwd.addSlashes(), whichApp)
 
