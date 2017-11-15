@@ -70,8 +70,12 @@ module.exports =
     whichApp = atom.config.get 'stata-exec.whichApp'
     [editor, buffer] = @_getEditorAndBuffer()
     documentTitle = editor.getPath()
-    doFileCommand = 'do `\\"' + documentTitle + '\\"\''
-    @sendCode(doFileCommand, whichApp)
+    if not documentTitle
+      console.error 'Error: File not yet saved.'
+      @conditionalWarning('Error: File not yet saved.')
+      return
+    doFileCommand = 'do `"' + documentTitle + '"\''
+    @sendCode(doFileCommand.addSlashes(), whichApp)
 
   sendCommand: ->
     whichApp = atom.config.get 'stata-exec.whichApp'
