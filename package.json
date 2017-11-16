@@ -2,7 +2,7 @@
   "name": "stata-exec",
   "main": "./lib/stata-exec",
   "version": "1.0.3",
-  "description": "Send code to the Stata GUI window",
+  "description": "Send code to Stata from Atom",
   "activationCommands": {
     "atom-text-editor": [
       "stata-exec:send-command",
@@ -18,10 +18,7 @@
     "url": "https://github.com/kylebarron/stata-exec/issues"
   },
   "keywords": [
-    "Stata",
-    "code",
-    "run",
-    "runner"
+    "Stata"
   ],
   "license": "MIT",
   "engines": {
