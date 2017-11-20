@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.2.0] - 2017-11-20
+- Add linux support.
+- Remove comments for all methods of sending code, not just 'send-command'
+- Change warnings from "can't find function" to "can't find program"
+
 ## [1.1.2] - 2017-11-19
 - Fix comment removal to not touch comments in strings. Fixes https://github.com/kylebarron/stata-exec/issues/2
     - Thanks to https://stackoverflow.com/questions/24518020/comprehensive-regexp-to-remove-javascript-comments
