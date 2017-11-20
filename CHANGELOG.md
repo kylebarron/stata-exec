@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.1.0] - 2017-11-19
+- Add XQuartz support. This allows code to be run on macOS in a session of Stata running on a remote server.
+
 ## [1.0.3] - 2017-11-15
 - Fix the "Set Working Directory" command to use compound double quotes.
 - Refactor "Do Entire File" to use `addSlashes()`
@@ -10,7 +13,7 @@
 
 ## [1.0.0] - 2017-11-13
 - Atom [stata-exec](https://atom.io/packages/stata-exec) package transferred to [@kylebarron](https://github.com/kylebarron) and hosted at https://github.com/kylebarron/stata-exec.
-- Ported from version 0.5.0 of [atom-r-exec](https://github.com/pimentel/atom-r-exec). All funcionality ported:
+- Ported from version 0.5.0 of [atom-r-exec](https://github.com/pimentel/atom-r-exec). All functionality ported:
     - cmd-enter: send selection or current line to Stata.
     - shift-cmd-d: send entire file to Stata. (File must be saved first. This runs do "/path/to/current/file")
     - shift-alt-p: send the previous command.

@@ -13,7 +13,7 @@
 # https://discuss.atom.io/t/custom-use-of-the-command-palette/15702/2
 
 # Ported from https://github.com/nteract/hydrogen/blob/master/keymaps/hydrogen.cson
-# Using .platform-darwin overrides
+# Using .platform-darwin overrides default keybinding assignment
 '.platform-darwin atom-text-editor[data-grammar="source stata"]:not([mini])':
   'shift-cmd-c': 'stata-exec:set-working-directory'
   'cmd-enter': 'stata-exec:send-command'
