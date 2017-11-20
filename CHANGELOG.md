@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.2.1] - 2017-11-20
+- Fix bug that couldn't find removeComments
+
 ## [1.2.0] - 2017-11-20
 - Add linux support.
 - Remove comments for all methods of sending code, not just 'send-command'
