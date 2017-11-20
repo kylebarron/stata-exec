@@ -22,11 +22,11 @@ sudo add-apt-repository ppa:troxor/autokey
 sudo apt update
 sudo apt install autokey-gtk
 ```
-You must then add the [stata-exec.py](./linux/stata-exec.py) file to your Autokey data directory. This is `~/.config/autokey/data/` by default, so you can add the file to that directory with the command
+You must then link the [stata-exec.py](./linux/stata-exec.py) file to your Autokey data directory. This is `~/.config/autokey/data/My Phrases` by default, so you can add the file to that directory with the command
 ```
-wget https://github.com/kylebarron/stata-exec/blob/master/linux/stata-exec.py -O '~/.config/autokey/data/stata-exec.py'
+ln -s ~/.atom/packages/stata-exec/linux/stata-exec.py ~/.config/autokey/data/My\ Phrases/
 ```
-This only needs to be done once. Additionally, the autokey program must be running for code sending to work. To do this, open up a new terminal and run `autokey-gtk`; this needs to be done every time you run code. (Alternatively, there's an option in Autokey's settings to start the program by default at login.)
+This only needs to be done once. (Creating a symlink ensures that the script is always the most up to date version.) Additionally, the autokey program must be running for code sending to work. To do this, open up a new terminal and run `autokey-gtk`; this needs to be done every time you run code. (Alternatively, there's an option in Autokey's settings to start the program by default at login.)
 
 ## Usage
 
