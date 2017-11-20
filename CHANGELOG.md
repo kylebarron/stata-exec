@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.1.2] - 2017-11-19
+- Fix comment removal to not touch comments in strings. Fixes https://github.com/kylebarron/stata-exec/issues/2
+    - Thanks to https://stackoverflow.com/questions/24518020/comprehensive-regexp-to-remove-javascript-comments
+
 ## [1.1.1] - 2017-11-19
 - Add restriction that code sent through Applescript can be max 8192 characters. https://www.stata.com/automation/#list
 - Include a line with `program drop myProgram` if it comes before `program define myProgram` when sending a program to Stata.
