@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.1.1] - 2017-11-19
+- Add restriction that code sent through Applescript can be max 8192 characters. https://www.stata.com/automation/#list
+- Include a line with `program drop myProgram` if it comes before `program define myProgram` when sending a program to Stata.
+
 ## [1.1.0] - 2017-11-19
 - Add XQuartz support. This allows code to be run on macOS in a session of Stata running on a remote server.
 

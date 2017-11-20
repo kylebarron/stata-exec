@@ -23,9 +23,10 @@ The following are the default keyboard shortcuts. These can be personalized in y
 - `shift-alt-p`: send the previous command.
 - `shift-cmd-c`: change Stata's working directory to that of current file.
 - `shift-cmd-g`: send paragraph under current cursor. A paragraph is a region enclosed by whitespace.
-- `shift-cmd-r`: send program definition under current cursor. For example, all the lines in the below snippet would be sent to Stata:
+- `shift-cmd-r`: send program definition under current cursor. If there exists `program drop` on the line before `program define`, the line including the former will be included in the selection. For example, all the lines in the below snippet would be sent to Stata:
 
     ```stata
+    cap program drop myProgram
     program define myProgram
         // program contents
     end
