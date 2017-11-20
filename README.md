@@ -47,7 +47,7 @@ All configuration can be done in the settings panel (Settings > Packages > stata
 - Notifications
   - If checked, a pop-up notification will appear when a paragraph or function is not identified.
 - Skip Comments
-  - If this and Advance Position are checked, the after running a line, the cursor will move to the next uncommented line.
+  - If this and Advance Position are checked, after running a line the cursor will move to the next uncommented line.
 - Paste Speed
   - This is only applicable for XQuartz. This value changes the amount of time the program waits between switching to the XQuartz window, pasting code, and sending "enter". The only way to send code to XQuartz is to use the clipboard, and the responsiveness of this process will depend on the speed of your internet connection. If the copy-pasting isn't working, try increasing the value. Decreasing the value will run your code faster. Value must be between 0.1 and 10.
 
@@ -58,6 +58,4 @@ This package is currently Mac-only. I hope to add Windows support, but need to f
 ### Troubleshooting and Known Issues
 - _Do entire file_ doesn't run the last line of the do file.
   - Stata needs there to be a _newline_ character following the last line of text. Add an empty line to the end of the file and it'll work.
-- Stata's console doesn't accept comment characters like `//`, `///`, and `/* */`. This package thus must remove comments before running the code, but currently also removes those characters from strings. Hence you might find weird behavior if you have such characters in a string.
-
 
