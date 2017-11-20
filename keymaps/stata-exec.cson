@@ -21,3 +21,13 @@
   'shift-cmd-r': 'stata-exec:send-program'
   'shift-cmd-g': 'stata-exec:send-paragraph'
   'shift-alt-p': 'stata-exec:send-previous-command'
+
+'.platform-linux atom-text-editor[data-grammar="source stata"]:not([mini])':
+  'shift-ctrl-c': 'stata-exec:set-working-directory'
+  'ctrl-enter': 'stata-exec:send-command'
+  'shift-ctrl-d': 'stata-exec:do-entire-file'
+  'shift-ctrl-r': 'stata-exec:send-program'
+  'shift-ctrl-g': 'stata-exec:send-paragraph'
+  'ctrl-alt-p': 'stata-exec:send-previous-command'
+
+  
