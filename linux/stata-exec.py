@@ -15,4 +15,3 @@ if window.wait_for_focus("Stata/(IC|SE|MP) 1[1-5].[0-2]", timeOut = 1):
 
     time.sleep(shortdelay)
     window.activate(current)
-    keyboard.send_keys("<escape>")
