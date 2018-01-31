@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.3.0] - 2018-01-31
+- Fix running of multiple lines with ///
+
 ## [1.2.1] - 2017-11-20
 - Fix bug that couldn't find removeComments
 
