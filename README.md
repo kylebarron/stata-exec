@@ -1,6 +1,6 @@
 # stata-exec
 
-Send code to Stata from [Atom](https://atom.io). _Note: This is for Mac and Linux only. Windows support is planned._ This was originally ported from the very good [r-exec](https://atom.io/packages/r-exec) package.
+Send code to Stata from [Atom](https://atom.io). _Note: This is for Mac and Linux only._ This was originally ported from the [r-exec](https://atom.io/packages/r-exec) package.
 
 ![run-command](./img/run_command.gif)
 
@@ -16,6 +16,8 @@ In the terminal run `apm install stata-exec` or go to Settings > Install and sea
 
 This package depends on [`language-stata`](https://atom.io/packages/language-stata), which you will be prompted to install if needed. There are no additional dependencies needed for use on macOS.
 
+#### Linux
+
 Linux users must install [Autokey](https://github.com/autokey-py3/autokey). On Ubuntu, that's as simple as:
 ```
 sudo add-apt-repository ppa:troxor/autokey
@@ -26,7 +28,7 @@ You must then link the [stata-exec.py](./linux/stata-exec.py) file to your Autok
 ```
 ln -s ~/.atom/packages/stata-exec/linux/stata-exec.py ~/.config/autokey/data/My\ Phrases/
 ```
-This only needs to be done once. (Creating a symlink ensures that the script is always the most up to date version.) Additionally, the autokey program must be running for code sending to work. To do this, open up a new terminal and run `autokey-gtk`; this needs to be done every time you run code. (Alternatively, there's an option in Autokey's settings to start the program by default at login.)
+This only needs to be done once. (Creating a symlink ensures that the script is always the most up to date version.) Additionally, the autokey program must be running for code sending to work. To do this, open up a new terminal and run `autokey-gtk`; this process needs to be running each time you run code. (Alternatively, there's an option in Autokey's settings to start the program by default at login.)
 
 ## Usage
 
@@ -71,7 +73,7 @@ All configuration can be done in the settings panel (Settings > Packages > stata
 
 ## Notes
 
-This package is currently only for Mac and Linux users. I hope to add Windows support, but need to figure out some Visual Basic or VBScript first.
+This package is currently only for Mac and Linux users. Interactive Windows support seems impossible, see issue [#4](https://github.com/kylebarron/stata-exec/issues/4).
 
 ### Troubleshooting and Known Issues
 - _Do entire file_ doesn't run the last line of the do file.
