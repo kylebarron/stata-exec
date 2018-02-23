@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.3.2] - 2018-02-23
+- Add try-except clause in `linux/stata-exec.py` to hopefully work correctly on Arch Linux.
+
+## [1.3.1] - 2018-01-31
+- Same as 1.3.0 but didn't publish correctly the first time
+
 ## [1.3.0] - 2018-01-31
 - Fix running of multiple lines with ///
 
