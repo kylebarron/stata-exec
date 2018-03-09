@@ -28,11 +28,12 @@
     "language-stata"
   ],
   "dependencies": {
+    "atom-package-deps": "4.6.0",
     "node-osascript": "1.0.4",
-    "path": "0.12.7",
-    "atom-package-deps": "4.6.0"
+    "npm": "^5.7.1",
+    "path": "0.12.7"
   },
-  "optionalDependencies": {
-    "winax": "1.0.4"
+  "scripts": {
+    "install": "node scripts/install_dependencies.js"
   }
 }
