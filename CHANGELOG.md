@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.4.0] - 2018-03-09
+- Add Windows support!
+
 ## [1.3.2] - 2018-02-23
 - Add try-except clause in `linux/stata-exec.py` to hopefully work correctly on Arch Linux.
 
