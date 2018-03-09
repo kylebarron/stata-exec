@@ -31,5 +31,8 @@
     "node-osascript": "1.0.4",
     "path": "0.12.7",
     "atom-package-deps": "4.6.0"
+  },
+  "optionalDependencies": {
+    "winax": "1.0.4"
   }
 }
