@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.4.1] - 2018-03-09
+- Try loading winax in a try/catch clause
+
 ## [1.4.0] - 2018-03-09
 - Add Windows support!
 
