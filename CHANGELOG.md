@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.4.2] - 2018-03-09
+- Small additions to README
+
 ## [1.4.1] - 2018-03-09
 - Try loading winax in a try/catch clause
 
