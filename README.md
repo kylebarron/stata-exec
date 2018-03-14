@@ -19,7 +19,7 @@ MacOS has no dependencies but you must select the flavor of Stata you own in the
 
 ### Windows
 
-Windows installation has a few steps. I hope to make this easier in the future, but for now this will have to do. Sadly, at this point **you need administrator privileges** to install this for Windows.
+Windows installation has a few steps, and I haven't been able to perfectly reproduce the working package on all computers. I hope to make this easier in the future, but for now this will have to do. Sadly, at this point **you need administrator privileges** to install this for Windows.
 
 1. Make sure you've installed this package and `language-stata`. In the command prompt, run `apm install stata-exec language-stata` or go to Settings > Install and search for `stata-exec` and `language-stata`.
 2. [Install this specific version of the program Node to your computer](https://nodejs.org/dist/v7.4.0/node-v7.4.0-x64.msi). Use the default installation settings.
@@ -120,9 +120,7 @@ All configuration can be done in the settings panel (Settings > Packages > stata
 
 ## Notes
 
-This package is currently only for Mac and Linux users. Interactive Windows support seems impossible, see issue [#4](https://github.com/kylebarron/stata-exec/issues/4).
-
 ### Troubleshooting and Known Issues
 - _Do entire file_ doesn't run the last line of the do file.
     - Stata needs there to be a _newline_ character following the last line of text. Add an empty line to the end of the file and it'll work.
-
+- On Linux, the Stata GUI window must be the only program open with a window title of `Stata/`
