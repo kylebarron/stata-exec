@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.4.3] - 2018-03-09
+- On Windows, when opening a new Stata session, set Stata's working directory to current file's working directory
+
 ## [1.4.2] - 2018-03-09
 - Small additions to README
 
