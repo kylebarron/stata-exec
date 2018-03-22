@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.4.4] - 2018-03-22
+- Remove `\r\n` when removing comments, not just `\n`, to support windows line endings
+
 ## [1.4.3] - 2018-03-09
 - On Windows, when opening a new Stata session, set Stata's working directory to current file's working directory
 
