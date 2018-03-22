@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.4.5] - 2018-03-22
+- Add final `\r` to code on Windows
+
 ## [1.4.4] - 2018-03-22
 - Remove `\r\n` when removing comments, not just `\n`, to support windows line endings
 
