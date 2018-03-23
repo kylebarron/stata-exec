@@ -58,6 +58,8 @@ Windows installation has a few steps, and I haven't been able to perfectly repro
     > 2. Right-click on the newly created "Shortcut to StataSE.exe", choose "Property", and change the Target from "C:\Program Files\Stata13\StataSE.exe" to "C:\Program Files\Stata13\StataSE.exe" /Register. Click "OK".
     > 3. Right-click on the updated "Shortcut to StataSE.exe"; choose "Run as administrator"
 
+    While you're doing that, add the path of the Stata executable to the "Stata Path" option in the settings.
+
 6. Restart Atom.
 
 Now you can open up a Stata do-file and run code! See [Usage](#usage) for more details.
@@ -102,10 +104,11 @@ The following are the default keyboard shortcuts (Mac / Windows and Linux). Thes
 
 All configuration can be done in the settings panel (Settings > Packages > stata-exec). The available options are listed below:
 
+- Stata Path (used for Windows only)
+    - Absolute path to Stata executable. The default setting will most likely need to be changed to reflect your install location and Stata flavor.
 - Which App (used for macOS only)
     - Select **StataIC**, **StataSE**, or **StataMP** depending on which version of Stata you have.
     - Select **XQuartz** if you want to run selections in session of Stata on a remote Unix server. To set this up, you need to have Stata already open in XQuartz; Atom will not open it for you. In your terminal, you'll need to do something like `ssh username@host -Y`, likely followed by `xstata`. This package's commands to run the entire do file and set the working directory are not supported on XQuartz.
-    - This setting currently has no effect on Linux.
 - Advance Position
     - If checked, move cursor to the next line/paragraph after running the current line/paragraph.
 - Focus Window

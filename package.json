@@ -28,8 +28,9 @@
     "language-stata"
   ],
   "dependencies": {
+    "atom-package-deps": "4.6.0",
+    "delay": "^2.0.0",
     "node-osascript": "1.0.4",
-    "path": "0.12.7",
-    "atom-package-deps": "4.6.0"
+    "path": "0.12.7"
   }
 }

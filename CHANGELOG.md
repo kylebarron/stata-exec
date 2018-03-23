@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.4.6] - 2018-03-23
+- Fix bug that prevented graph windows from opening
+
 ## [1.4.5] - 2018-03-22
 - Add final `\r` to code on Windows
 
