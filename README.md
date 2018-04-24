@@ -127,3 +127,4 @@ All configuration can be done in the settings panel (Settings > Packages > stata
 - _Do entire file_ doesn't run the last line of the do file.
     - Stata needs there to be a _newline_ character following the last line of text. Add an empty line to the end of the file and it'll work.
 - On Linux, the Stata GUI window must be the only program open with a window title of `Stata/`
+- On Linux, sending unicode characters is not currently supported. See [this issue](https://github.com/autokey/autokey/issues/128).
