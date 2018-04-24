@@ -16,7 +16,7 @@
 # Using .platform-darwin overrides default keybinding assignment
 '.platform-darwin atom-text-editor[data-grammar="source stata"]:not([mini])':
   'shift-cmd-c': 'stata-exec:set-working-directory'
-  'cmd-enter': 'stata-exec:run-command'
+  'cmd-enter': 'stata-exec:run'
   'shift-cmd-d': 'stata-exec:run-all'
   'shift-cmd-r': 'stata-exec:run-program'
   'shift-cmd-g': 'stata-exec:run-paragraph'
@@ -24,7 +24,7 @@
 
 'atom-text-editor[data-grammar="source stata"]:not([mini])':
   'shift-ctrl-c': 'stata-exec:set-working-directory'
-  'ctrl-enter': 'stata-exec:run-command'
+  'ctrl-enter': 'stata-exec:run'
   'shift-ctrl-d': 'stata-exec:run-all'
   'shift-ctrl-r': 'stata-exec:run-program'
   'shift-ctrl-g': 'stata-exec:run-paragraph'

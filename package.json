@@ -5,8 +5,8 @@
   "description": "Send code to Stata from Atom",
   "activationCommands": {
     "atom-text-editor": [
+      "stata-exec:run",
       "stata-exec:run-all",
-      "stata-exec:run-command",
       "stata-exec:run-paragraph",
       "stata-exec:run-previous-command",
       "stata-exec:run-program",
