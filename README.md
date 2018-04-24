@@ -87,6 +87,7 @@ To open the Command Palette, press <kbd>cmd</kbd>-<kbd>shift</kbd>-<kbd>P</kbd> 
 The following are the default keyboard shortcuts (Mac / Windows and Linux). These can be personalized in your [`keymap.cson`](http://flight-manual.atom.io/behind-atom/sections/keymaps-in-depth/).
 
 - <kbd>cmd</kbd>-<kbd>enter</kbd> / <kbd>ctrl</kbd>-<kbd>enter</kbd>: run selection or current line in Stata.
+- <kbd>shift</kbd>-<kbd>enter</kbd>: run selection or current line in Stata and move down.
 - <kbd>shift</kbd>-<kbd>cmd</kbd>-<kbd>D</kbd> / <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>D</kbd>: run entire file in Stata. (File must be saved first. This runs do "/path/to/current/file")
 - <kbd>shift</kbd>-<kbd>alt</kbd>-<kbd>P</kbd> / <kbd>ctrl</kbd>-<kbd>alt</kbd>-<kbd>p</kbd>: run the previous command.
 - <kbd>shift</kbd>-<kbd>cmd</kbd>-<kbd>C</kbd> / <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>C</kbd>: change Stata's working directory to that of current file.
