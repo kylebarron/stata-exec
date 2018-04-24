@@ -9,7 +9,8 @@ window.activate("Stata/")
 try:
     if window.wait_for_focus("Stata/(IC|SE|MP) 1[1-5].[0-2]", timeOut = 1):
 
-        cmd = open(join(expanduser('~'), '.stata-exec_code'),'r').read()
+        with open(join(expanduser('~'), '.stata-exec_code'), 'r') as f:
+            cmd = f.read()
 
         time.sleep(shortdelay)
         keyboard.send_keys(cmd)
@@ -18,7 +19,8 @@ try:
         time.sleep(shortdelay)
         window.activate(current)
 except TypeError:
-    cmd = open(join(expanduser('~'), '.stata-exec_code'),'r').read()
+    with open(join(expanduser('~'), '.stata-exec_code'), 'r') as f:
+        cmd = f.read()
 
     time.sleep(shortdelay)
     keyboard.send_keys(cmd)
