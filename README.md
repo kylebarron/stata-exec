@@ -86,12 +86,12 @@ To open the Command Palette, press <kbd>cmd</kbd>-<kbd>shift</kbd>-<kbd>P</kbd> 
 
 The following are the default keyboard shortcuts (Mac / Windows and Linux). These can be personalized in your [`keymap.cson`](http://flight-manual.atom.io/behind-atom/sections/keymaps-in-depth/).
 
-- <kbd>cmd</kbd>-<kbd>enter</kbd> / <kbd>ctrl</kbd>-<kbd>enter</kbd>: send selection or current line to Stata.
-- <kbd>shift</kbd>-<kbd>cmd</kbd>-<kbd>D</kbd> / <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>D</kbd>: send entire file to Stata. (File must be saved first. This runs do "/path/to/current/file")
-- <kbd>shift</kbd>-<kbd>alt</kbd>-<kbd>P</kbd> / <kbd>ctrl</kbd>-<kbd>alt</kbd>-<kbd>p</kbd>: send the previous command.
+- <kbd>cmd</kbd>-<kbd>enter</kbd> / <kbd>ctrl</kbd>-<kbd>enter</kbd>: run selection or current line in Stata.
+- <kbd>shift</kbd>-<kbd>cmd</kbd>-<kbd>D</kbd> / <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>D</kbd>: run entire file in Stata. (File must be saved first. This runs do "/path/to/current/file")
+- <kbd>shift</kbd>-<kbd>alt</kbd>-<kbd>P</kbd> / <kbd>ctrl</kbd>-<kbd>alt</kbd>-<kbd>p</kbd>: run the previous command.
 - <kbd>shift</kbd>-<kbd>cmd</kbd>-<kbd>C</kbd> / <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>C</kbd>: change Stata's working directory to that of current file.
-- <kbd>shift</kbd>-<kbd>cmd</kbd>-<kbd>G</kbd> / <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>G</kbd>: send paragraph under current cursor. A paragraph is a region enclosed by whitespace.
-- <kbd>shift</kbd>-<kbd>cmd</kbd>-<kbd>R</kbd> / <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>R</kbd>: send program definition under current cursor. If there exists `program drop` on the line before `program define`, the line including the former will be included in the selection. For example, all the lines in the below snippet would be sent to Stata:
+- <kbd>shift</kbd>-<kbd>cmd</kbd>-<kbd>G</kbd> / <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>G</kbd>: run paragraph under current cursor. A paragraph is a region enclosed by whitespace.
+- <kbd>shift</kbd>-<kbd>cmd</kbd>-<kbd>R</kbd> / <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>R</kbd>: run program definition under current cursor. If there exists `program drop` on the line before `program define`, the line including the former will be included in the selection. For example, all the lines in the below snippet would be sent to Stata:
 
     ```stata
     cap program drop myProgram
@@ -124,7 +124,7 @@ All configuration can be done in the settings panel (Settings > Packages > stata
 ## Notes
 
 ### Troubleshooting and Known Issues
-- _Do entire file_ doesn't run the last line of the do file.
+- _Run All_ doesn't run the last line of the do file.
     - Stata needs there to be a _newline_ character following the last line of text. Add an empty line to the end of the file and it'll work.
 - On Linux, the Stata GUI window must be the only program open with a window title of `Stata/`
 - On Linux, sending unicode characters is not currently supported. See [this issue](https://github.com/autokey/autokey/issues/128).

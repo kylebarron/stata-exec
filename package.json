@@ -5,12 +5,12 @@
   "description": "Send code to Stata from Atom",
   "activationCommands": {
     "atom-text-editor": [
-      "stata-exec:send-command",
-      "stata-exec:send-previous-command",
-      "stata-exec:send-program",
-      "stata-exec:send-paragraph",
-      "stata-exec:set-working-directory",
-      "stata-exec:do-entire-file"
+      "stata-exec:run-all",
+      "stata-exec:run-command",
+      "stata-exec:run-paragraph",
+      "stata-exec:run-previous-command",
+      "stata-exec:run-program",
+      "stata-exec:set-working-directory"
     ]
   },
   "repository": "https://github.com/kylebarron/stata-exec",
