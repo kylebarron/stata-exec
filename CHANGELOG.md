@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.5.0]
+- Update API to resemble Hydrogen's API
+- Add `Run and Move Down` command, bound to <kbd>shift</kbd>-<kbd>enter</kbd>
+
 ## [1.4.6] - 2018-03-23
 - Fix bug that prevented graph windows from opening
 
