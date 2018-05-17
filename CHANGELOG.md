@@ -1,8 +1,9 @@
 # Changelog
 
-## [1.5.0]
-- Update API to resemble Hydrogen's API
+## [1.5.0] - 2018-05-17
+- Update API to resemble Hydrogen's API (keeping current keyboard shortcuts)
 - Add `Run and Move Down` command, bound to <kbd>shift</kbd>-<kbd>enter</kbd>
+- Fix bug in Linux where sending a large selection pasted some text in Atom instead of Stata.
 
 ## [1.4.6] - 2018-03-23
 - Fix bug that prevented graph windows from opening
