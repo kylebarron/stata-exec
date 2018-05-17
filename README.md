@@ -103,6 +103,8 @@ The following are the default keyboard shortcuts (Mac / Windows and Linux). Thes
     end
     ```
 
+    Note that `end` must be on a line by itself to be identified as the end of the program.
+
 ## Configuration
 
 All configuration can be done in the settings panel (Settings > Packages > stata-exec). The available options are listed below:

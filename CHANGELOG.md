@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.5.1] - 2018-05-17
+- Require that `end` be on a line by itself to indicate the end of a program.
+    This is to prevent false positives where the word "end" appears elsewhere.
+
 ## [1.5.0] - 2018-05-17
 - Update API to resemble Hydrogen's API (keeping current keyboard shortcuts)
 - Add `Run and Move Down` command, bound to <kbd>shift</kbd>-<kbd>enter</kbd>
