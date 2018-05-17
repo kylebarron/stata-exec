@@ -78,6 +78,8 @@ ln -s ~/.atom/packages/stata-exec/linux/stata-exec.py ~/.config/autokey/data/My\
 ```
 This only needs to be done once. (Creating a symlink ensures that the script is always the most up to date version.) Additionally, the autokey program must be running for code sending to work. To do this, open up a new terminal and run `autokey-gtk`; this process needs to be running each time you run code. (Alternatively, there's an option in Autokey's settings to start the program by default at login.)
 
+**Important: You cannot click anywhere while your command is being pasted to Stata.** This package works on Linux by copying and pasting your commands (minus comments) to the Stata window, so if you click back in Atom while it's pasting, your commands will be pasted back into Atom and may crash Atom.
+
 ## Usage
 
 Code can be run using either the Command Palette or with keyboard shortcuts.
@@ -129,3 +131,5 @@ All configuration can be done in the settings panel (Settings > Packages > stata
     - Stata needs there to be a _newline_ character following the last line of text. Add an empty line to the end of the file and it'll work.
 - On Linux, the Stata GUI window must be the only program open with a window title of `Stata/`
 - On Linux, sending unicode characters is not currently supported. See [this issue](https://github.com/autokey/autokey/issues/128).
+- On Linux, **you cannot click anywhere while your command is being pasted to Stata.** This package works on Linux by copying and pasting your commands (minus comments) to the Stata window, so if you click back in Atom while it's pasting, your commands will be pasted back into Atom and may crash Atom.
+
