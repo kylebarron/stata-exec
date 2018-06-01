@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.5.2] - 2018-06-01
+
+- Update keymaps so the package works within Dynamic Documents
+
 ## [1.5.1] - 2018-05-17
 - Require that `end` be on a line by itself to indicate the end of a program.
     This is to prevent false positives where the word "end" appears elsewhere.
