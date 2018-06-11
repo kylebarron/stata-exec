@@ -15,4 +15,4 @@ shallow_clone: true
 cache:
   - '%APPDATA%\npm-cache'
 artifacts:
-  - path: node_modules\\winax
+  - path: "node_modules\\winax"
