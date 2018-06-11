@@ -14,3 +14,5 @@ build: off
 shallow_clone: true
 cache:
   - '%APPDATA%\npm-cache'
+artifacts:
+  - node_modules\\winax
