@@ -1,7 +1,7 @@
 environment:
   PYTHON: "C:\\Python27-x64"
   matrix:
-    - nodejs_version: '8'
+    - nodejs_version: '7.9.0'
 install:
   - ps: Install-Product node $env:nodejs_version
   - npm install --global npm@latest
