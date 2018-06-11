@@ -1,0 +1,18 @@
+environment:
+  matrix:
+    - nodejs_version: '10'
+    - nodejs_version: '8'
+    - nodejs_version: '6'
+    - PYTHON: "C:\\Python27"
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - npm install --global npm@latest
+  - set PATH=%APPDATA%\\npm;%PATH%
+  - npm install winax --python=%PYTHON%\\python.exe
+  - npm rebuild winax --runtime=electron --target=1.7.15 --disturl=https://atom.io/download/atom-shell --build-from-source
+matrix:
+  fast_finish: true
+build: off
+shallow_clone: true
+cache:
+  - '%APPDATA%\npm-cache'
