@@ -6,6 +6,10 @@
     - Improves paste speed, reliability; allows for pasting unicode characters
     - Allows you to type while the code is pasting
     - In future could create functionality to support two Stata windows at once
+- Important bugfixes for using xdotool
+    - Search only for the first Stata window
+    - Force <kbd>ctrl</kbd> to be not pressed when the program sends <kbd>ctrl</kbd>+<kbd>v</kbd>. Since the user usually is pressing <kbd>ctrl</kbd> to run the command, this is important. Otherwise all that is entered into Stata is <kbd>v</kbd>.
+
 
 ## [1.5.2] - 2018-06-01
 
