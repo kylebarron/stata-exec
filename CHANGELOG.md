@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0] - 2018-07-24
+
+- Use xdotool instead of autokey on Linux
+    - Improves paste speed, reliability; allows for pasting unicode characters
+    - Allows you to type while the code is pasting
+    - In future could create functionality to support two Stata windows at once
+
 ## [1.5.2] - 2018-06-01
 
 - Update keymaps so the package works within Dynamic Documents

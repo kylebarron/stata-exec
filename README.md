@@ -5,6 +5,8 @@ Send code to Stata from [Atom](https://atom.io). This package supports Windows, 
 ![run-command](./img/run_command.gif)
 
 ## News
+
+- Version 1.6.0 uses a new program on Linux to send code to Stata. It seems _way_ better; faster pasting and supports unicode characters.
 - Version 1.4.0 includes Windows support!
 
 ## Installation
@@ -13,7 +15,6 @@ In the terminal run `apm install stata-exec` or go to Settings > Install and sea
 This package depends on [`language-stata`](https://atom.io/packages/language-stata), which you should be prompted to install if needed.
 
 ### MacOS
-
 
 MacOS has no dependencies but you must select the flavor of Stata you own in the package's configuration. Learn more in the [configuration section](#configuration) below. Then head to the [usage section](#usage) for more details on running code.
 
@@ -66,19 +67,14 @@ Now you can open up a Stata do-file and run code! See [Usage](#usage) for more d
 
 ### Linux
 
-Linux users must install [Autokey](https://github.com/autokey-py3/autokey). On Ubuntu, that's as simple as:
-```
-sudo add-apt-repository ppa:troxor/autokey
-sudo apt update
-sudo apt install autokey-gtk
-```
-You must then link the [stata-exec.py](./linux/stata-exec.py) file to your Autokey data directory. This is `~/.config/autokey/data/My Phrases` by default, so you can add the file to that directory with the command
-```
-ln -s ~/.atom/packages/stata-exec/linux/stata-exec.py ~/.config/autokey/data/My\ Phrases/
-```
-This only needs to be done once. (Creating a symlink ensures that the script is always the most up to date version.) Additionally, the autokey program must be running for code sending to work. To do this, open up a new terminal and run `autokey-gtk`; this process needs to be running each time you run code. (Alternatively, there's an option in Autokey's settings to start the program by default at login.)
+**Important**: Linux dependencies changed in version 1.6.0.
 
-**Important: You cannot click anywhere while your command is being pasted to Stata.** This package works on Linux by copying and pasting your commands (minus comments) to the Stata window, so if you click back in Atom while it's pasting, your commands will be pasted back into Atom and may crash Atom.
+Linux users must install [xdotool](https://github.com/jordansissel/xdotool) and [xclip](https://github.com/astrand/xclip).
+
+On Ubuntu:
+```
+sudo apt install xdotool xclip
+```
 
 ## Usage
 
@@ -131,7 +127,5 @@ All configuration can be done in the settings panel (Settings > Packages > stata
 ### Troubleshooting and Known Issues
 - _Run All_ doesn't run the last line of the do file.
     - Stata needs there to be a _newline_ character following the last line of text. Add an empty line to the end of the file and it'll work.
-- On Linux, the Stata GUI window must be the only program open with a window title of `Stata/`
-- On Linux, sending unicode characters is not currently supported. See [this issue](https://github.com/autokey/autokey/issues/128).
-- On Linux, **you cannot click anywhere while your command is being pasted to Stata.** This package works on Linux by copying and pasting your commands (minus comments) to the Stata window, so if you click back in Atom while it's pasting, your commands will be pasted back into Atom and may crash Atom.
+- On Linux, the Stata GUI window must be the only program open with a window title of `Stata/`. If not, it appears the program will alternate between open Stata windows when pasting. xdotool seems to let me choose which Stata window to send text to, so maybe that could be put into a more useful function in the future.
 
