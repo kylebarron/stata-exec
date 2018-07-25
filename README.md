@@ -67,9 +67,7 @@ Now you can open up a Stata do-file and run code! See [Usage](#usage) for more d
 
 ### Linux
 
-**Important**: Linux dependencies changed in version 1.6.0.
-
-Linux users must install [xdotool](https://github.com/jordansissel/xdotool) and [xclip](https://github.com/astrand/xclip).
+**Important**: Linux dependencies changed in version 1.6.0. Linux users must install [xdotool](https://github.com/jordansissel/xdotool) and [xclip](https://github.com/astrand/xclip).
 
 On Ubuntu:
 ```
@@ -82,24 +80,28 @@ Code can be run using either the Command Palette or with keyboard shortcuts.
 
 To open the Command Palette, press <kbd>cmd</kbd>-<kbd>shift</kbd>-<kbd>P</kbd> / <kbd>ctrl</kbd>-<kbd>shift</kbd>-<kbd>P</kbd>, and then start typing `Stata Exec`. The available commands will be shown in the drop-down menu.
 
-The following are the default keyboard shortcuts (Mac / Windows and Linux). These can be personalized in your [`keymap.cson`](http://flight-manual.atom.io/behind-atom/sections/keymaps-in-depth/).
+The following are the default keyboard shortcuts (on macOS, use <kbd>cmd</kbd> instead of <kbd>ctrl</kbd>). Keyboard shortcuts can be personalized in your `keymap.cson` file. [More instructions here](http://flight-manual.atom.io/behind-atom/sections/keymaps-in-depth/).
 
-- <kbd>cmd</kbd>-<kbd>enter</kbd> / <kbd>ctrl</kbd>-<kbd>enter</kbd>: run selection or current line in Stata.
-- <kbd>shift</kbd>-<kbd>enter</kbd>: run selection or current line in Stata and move down.
-- <kbd>shift</kbd>-<kbd>cmd</kbd>-<kbd>D</kbd> / <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>D</kbd>: run entire file in Stata. (File must be saved first. This runs do "/path/to/current/file")
-- <kbd>shift</kbd>-<kbd>alt</kbd>-<kbd>P</kbd> / <kbd>ctrl</kbd>-<kbd>alt</kbd>-<kbd>p</kbd>: run the previous command.
-- <kbd>shift</kbd>-<kbd>cmd</kbd>-<kbd>C</kbd> / <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>C</kbd>: change Stata's working directory to that of current file.
-- <kbd>shift</kbd>-<kbd>cmd</kbd>-<kbd>G</kbd> / <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>G</kbd>: run paragraph under current cursor. A paragraph is a region enclosed by whitespace.
-- <kbd>shift</kbd>-<kbd>cmd</kbd>-<kbd>R</kbd> / <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>R</kbd>: run program definition under current cursor. If there exists `program drop` on the line before `program define`, the line including the former will be included in the selection. For example, all the lines in the below snippet would be sent to Stata:
+| Command | Default keyboard binding                      | Description |
+|-----------------------------|------------------|-----------------------------------------------------------------|
+| `Run` | <kbd>ctrl</kbd>-<kbd>enter</kbd>              | Run selection or current line in Stata. |
+| `Run All` | <kbd>shift</kbd>-<kbd>enter</kbd>             | Run selection or current line in Stata and move down. |
+| `Run Batch` | <kbd>ctrl</kbd>-<kbd>alt</kbd>-<kbd>d</kbd> | Run selection with `do` instead of interactively pasting commands. |
+| `Run And Move Down` | <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>D</kbd> | Run entire file in Stata. (This runs `do "/path/to/current/file"`) |
+| `Run Paragraph` | <kbd>ctrl</kbd>-<kbd>alt</kbd>-<kbd>p</kbd>   | Run the previous command. |
+| `Run Previous Command` | <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>C</kbd> | Change Stata's working directory to that of current file. |
+| `Run Program` | <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>G</kbd> | Run paragraph under current cursor. A paragraph is a region enclosed by whitespace. |
+| `Set Working Directory` | <kbd>shift</kbd>-<kbd>ctrl</kbd>-<kbd>R</kbd> | Run program definition under current cursor. See note below. |
 
-    ```stata
-    cap program drop myProgram
-    program define myProgram
-        // program contents
-    end
-    ```
+For `Run Program`, if there exists `program drop` on the line before `program define`, the line including the former will be included in the selection. For example, all the lines in the below snippet would be sent to Stata:
+```stata
+cap program drop myProgram
+program define myProgram
+    // program contents
+end
+```
 
-    Note that `end` must be on a line by itself to be identified as the end of the program.
+Note that `end` must be on a line by itself to be identified as the end of the program.
 
 ## Configuration
 

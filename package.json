@@ -8,6 +8,7 @@
       "stata-exec:run",
       "stata-exec:run-all",
       "stata-exec:run-and-move-down",
+      "stata-exec:run-batch",
       "stata-exec:run-paragraph",
       "stata-exec:run-previous-command",
       "stata-exec:run-program",

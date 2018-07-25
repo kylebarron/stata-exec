@@ -2,6 +2,7 @@
 
 ## [1.7.0] - 2018-07-25
 
+- Support batch sending of code selection; run with `do`.
 - On Linux, print stdout and stderr of xdotool to console
 - On Linux, fix bug where xdotool (more likely xclip) would fail when the clipboard was empty, i.e. upon first logging in.
 
