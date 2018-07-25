@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.7.0] - 2018-07-25
+
+- On Linux, print stdout and stderr of xdotool to console
+
 ## [1.6.0] - 2018-07-24
 
 - Use xdotool instead of autokey on Linux
