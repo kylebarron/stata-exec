@@ -3,6 +3,7 @@
 ## [1.7.0] - 2018-07-25
 
 - On Linux, print stdout and stderr of xdotool to console
+- On Linux, fix bug where xdotool (more likely xclip) would fail when the clipboard was empty, i.e. upon first logging in.
 
 ## [1.6.0] - 2018-07-24
 
