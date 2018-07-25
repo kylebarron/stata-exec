@@ -6,6 +6,7 @@ Send code to Stata from [Atom](https://atom.io). This package supports Windows, 
 
 ## News
 
+- Version 1.7.0 supports batch sending of code selection with `Run Batch`.
 - Version 1.6.0 uses a new program on Linux to send code to Stata. It seems _way_ better; faster pasting and supports unicode characters.
 - Version 1.4.0 includes Windows support!
 
