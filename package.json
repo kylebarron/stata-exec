@@ -1,6 +1,6 @@
 {
   "name": "stata-exec",
-  "main": "./lib/stata-exec",
+  "main": "./lib/main.js",
   "version": "1.7.0",
   "description": "Send code to Stata from Atom",
   "activationCommands": {
