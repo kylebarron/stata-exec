@@ -4,12 +4,31 @@
     'submenu': [
       'label': 'Stata-exec'
       'submenu': [
-        { 'label': 'Send line/selection', 'command': 'stata-exec:send-command'}
-        { 'label': 'Do entire file', 'command': 'stata-exec:do-entire-file'}
-        { 'label': 'Send program', 'command': 'stata-exec:send-program'}
-        { 'label': 'Send paragraph', 'command': 'stata-exec:send-paragraph'}
-        { 'label': 'Send previous command', 'command': 'stata-exec:send-previous-command'}
-        { 'label': 'Change working directory', 'command': 'stata-exec:set-working-directory'}
+        {
+          'label': 'Run'
+          'command': 'stata-exec:run'
+        }, {
+          'label': 'Run and Move Down'
+          'command': 'stata-exec:run-and-move-down'
+        }, {
+          'label': 'Run All'
+          'command': 'stata-exec:run-all'
+        }, {
+          'label': 'Run Batch'
+          'command': 'stata-exec:run-batch'
+        }, {
+          'label': 'Run Paragraph'
+          'command': 'stata-exec:run-paragraph'
+        }, {
+          'label': 'Run Previous Command'
+          'command': 'stata-exec:run-previous-command'
+        }, {
+          'label': 'Run Program'
+          'command': 'stata-exec:run-program'
+        }, {
+          'label': 'Set Working Directory'
+          'command': 'stata-exec:set-working-directory'
+        }
       ]
     ]
   }
