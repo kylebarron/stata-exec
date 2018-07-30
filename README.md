@@ -8,7 +8,6 @@ Send code to Stata from [Atom](https://atom.io). This package supports Windows, 
 
 - Version 1.7.0 supports batch sending of code selection with `Run Batch`.
 - Version 1.6.0 uses a new program on Linux to send code to Stata. It seems _way_ better; faster pasting and supports unicode characters.
-- Version 1.4.0 includes Windows support!
 
 ## Installation
 
@@ -131,4 +130,3 @@ All configuration can be done in the settings panel (Settings > Packages > stata
 - _Run All_ doesn't run the last line of the do file.
     - Stata needs there to be a _newline_ character following the last line of text. Add an empty line to the end of the file and it'll work.
 - On Linux, the Stata GUI window must be the only program open with a window title of `Stata/`. If not, it appears the program will alternate between open Stata windows when pasting. xdotool seems to let me choose which Stata window to send text to, so maybe that could be put into a more useful function in the future.
-

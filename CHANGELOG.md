@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.8.0] - 2018-07-30
+
+- Support multiple cursors. #34
+- Fix batch sending of code. #41
+- Rewrite much of package in better JavaScript.
+
 ## [1.7.0] - 2018-07-25
 
 - Support batch sending of code selection; run with `do`.
