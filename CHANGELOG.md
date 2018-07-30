@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.8.1] - 2018-07-30
+
+- Fix batch end of line errors. #41
+- Fix menus
+
 ## [1.8.0] - 2018-07-30
 
 - Support multiple cursors. #34
