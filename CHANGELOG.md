@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.8.2] - 2018-08-02
+
+- Fix running on Windows
+
 ## [1.8.1] - 2018-07-30
 
 - Fix batch end of line errors. #41
