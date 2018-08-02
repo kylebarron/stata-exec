@@ -29,6 +29,9 @@
   "package-deps": [
     "language-stata"
   ],
+  "optionalDependencies": {
+    "winax": "1.0.13"
+  },
   "dependencies": {
     "atom-package-deps": "4.6.0",
     "delay": "^2.0.0",
