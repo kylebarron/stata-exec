@@ -1,13 +1,18 @@
 environment:
   PYTHON: "C:\\Python27-x64"
   matrix:
-    - nodejs_version: '7.9.0'
+    - atom_v: '1.30'
+      node_v: '8.9.3'
+      electron_v: '2.0.5'
+    - atom_v: '1.29'
+      node_v: '8.9.3'
+      electron_v: '2.0.5'
 install:
-  - ps: Install-Product node $env:nodejs_version
+  - ps: Install-Product node $env:node_v
   - npm install --global npm@latest
   - set PATH=%APPDATA%\\npm;%PATH%
   - npm install winax --python=%PYTHON%\\python.exe
-  - npm rebuild winax --runtime=electron --target=1.7.15 --disturl=https://atom.io/download/atom-shell --build-from-source
+  - npm rebuild winax --runtime=electron --target=%electron_v% --disturl=https://atom.io/download/atom-shell --build-from-source
 matrix:
   fast_finish: true
 build: off
