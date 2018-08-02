@@ -35,6 +35,5 @@
     "escape-string-applescript": "^2.0.0",
     "path": "0.12.7",
     "run-applescript": "^3.2.0",
-    "winax_all_os": "kylebarron/winax_all_os"
   }
 }
