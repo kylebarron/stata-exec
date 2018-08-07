@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.8.3] - 2018-08-07
+
+- Remove comments when sending paragraphs and programs.
+
 ## [1.8.2] - 2018-08-02
 
 - Fix running on Windows
