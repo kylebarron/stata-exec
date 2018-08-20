@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.8.4] - 2018-08-20
+
+- Add `Stata` as option in Mac executable list.
+
 ## [1.8.3] - 2018-08-07
 
 - Remove comments when sending paragraphs and programs.
