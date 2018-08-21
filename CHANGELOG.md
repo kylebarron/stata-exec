@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.8.5] - 2018-08-20
+
+- Add note about Stata Jupyter kernel to README.
+
 ## [1.8.4] - 2018-08-20
 
 - Add `Stata` as option in Mac executable list.
