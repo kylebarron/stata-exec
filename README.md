@@ -4,7 +4,7 @@ Send code to Stata from [Atom](https://atom.io). This package supports Windows, 
 
 ---
 
-This package is unlikely to receive future updates since it has mostly been superseded by the new [Stata Jupyter Kernel](https://kylebarron.github.io/stata_kernel/). Using that with Atom's [Hydrogen package](https://atom.io/packages/Hydrogen) can show Stata results inline. It works with Windows, macOS, and Linux.
+While `stata-exec` will still be supported, I suggest users use the new [Stata Jupyter Kernel](https://kylebarron.github.io/stata_kernel/) along with the [Hydrogen package](https://atom.io/packages/Hydrogen) instead. It can show Stata results inline and works with Windows, macOS, and Linux.
 
 ![](./img/stata_kernel_example.gif)
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.8.6] - 2018-10-30
+
+- Modify note about Stata Jupyter kernel in README.
+
 ## [1.8.5] - 2018-08-20
 
 - Add note about Stata Jupyter kernel to README.
