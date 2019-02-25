@@ -28,6 +28,8 @@ MacOS has no dependencies but you must select the flavor of Stata you own in the
 
 ### Windows
 
+This package can potentially work on Windows but is very hard to get right, so it's not officially supported. I would strongly recommend Windows users try [`stata_kernel`](https://kylebarron.github.io/stata_kernel/) which has a much easier installation process on Windows.
+
 Windows installation has a few steps, and I haven't been able to perfectly reproduce the working package on all computers. I hope to make this easier in the future, but for now this will have to do. Sadly, at this point **you need administrator privileges** to install this for Windows.
 
 1. Make sure you've installed this package and `language-stata`. In the command prompt, run `apm install stata-exec language-stata` or go to Settings > Install and search for `stata-exec` and `language-stata`.
